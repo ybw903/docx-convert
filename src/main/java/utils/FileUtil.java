@@ -1,11 +1,25 @@
 package utils;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.channels.FileChannel;
 
 public class FileUtil {
+
+    public static String readFile(String filePath) {
+        File file = new File(filePath);
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Error!";
+    }
+
     public static boolean copy(String srcFilePath, String destFilePath) {
         FileChannel in = null;
         FileChannel out = null;

@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Application {
+    private static final String docsPath = "/result/word/document.xml";
     public static void main(String[] args) throws IOException {
 
         String srcFilePath = "test.docx";
@@ -17,5 +18,6 @@ public class Application {
         Path target = Paths.get("/result");
 
         System.out.println(ZipUtil.unzipFile(src, target));
+        System.out.println(FileUtil.readFile(docsPath));
     }
 }
